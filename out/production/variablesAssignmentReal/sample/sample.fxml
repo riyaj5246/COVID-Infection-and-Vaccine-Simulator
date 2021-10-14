@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <TabPane layoutX="0.0" layoutY="0.0" prefHeight="856.0" prefWidth="1574.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Patient Information">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #EDDAF7;">
+                     <children>
+                         <Text layoutX="23.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Information ">
+                             <font>
+                                 <Font size="36.0" />
+                             </font></Text>
+
+                         <ChoiceBox fx:id="patientSelector" layoutX="283.0" layoutY="72.0" prefWidth="150.0" style="-fx-background-color: #8ab6d1;" />
+                         <Button fx:id="addPatientBtn" layoutX="453.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAddPatient" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #8ab6d1;" text="Add Patient" />
+                         <Button fx:id="initializeBtn" layoutX="375.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleStart" style="-fx-background-color: #c093d9;" text="Initialize" />
+                         <TextField fx:id="nameField" layoutX="193.0" layoutY="153.0" onAction="#handleSetName" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #8dc2b0;" />
+                         <Text fx:id="nameText" layoutX="194.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="60.0">
+                             <font>
+                                 <Font size="13.0" />
+                             </font>
+                         </Text>
+                         <Text layoutX="22.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Background" wrappingWidth="150.4">
+                             <font>
+                                 <Font name="System Bold" size="24.0" />
+                             </font>
+                         </Text>
+                         <Text fx:id="nameText1" layoutX="193.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" wrappingWidth="92.0">
+                             <font>
+                                 <Font size="13.0" />
+                             </font>
+                         </Text>
+                         <Text fx:id="nameText11" layoutX="194.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="60.0">
+                             <font>
+                                 <Font size="13.0" />
+                             </font>
+                         </Text>
+                         <TextField fx:id="ageField" layoutX="193.0" layoutY="214.0" onAction="#handleSetAge" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #8dc2b0;" />
+                         <!--      <TextField fx:id="genderField" layoutX="193.0" layoutY="274.0" onAction="#handleSetGender" prefHeight="26.0" prefWidth="128.0" />-->
+                         <TextField fx:id="searchBar" layoutX="64.0" layoutY="72.0" onKeyReleased="#handleFilterNames" prefHeight="26.0" prefWidth="204.0" style="-fx-background-color: #8ab6d1;" />
+                         <Text layoutX="23.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="47.13671875" />
+                         <Text fx:id="identicalNameErrorText" fill="RED" layoutX="222.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name Already in Use" visible="false" wrappingWidth="98.13671875">
+                             <font>
+                                 <Font size="10.0" />
+                             </font>
+                         </Text>
+                         <Text fx:id="startWithAddPatientErrorText" fill="RED" layoutX="222.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start with Add Patient" visible="false" wrappingWidth="98.13671875">
+                             <font>
+                                 <Font size="10.0" />
+                             </font>
+                         </Text>
+                         <Text fx:id="nonNumberErrorText" fill="RED" layoutX="218.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Type a Number" visible="false" wrappingWidth="106.13671875">
+                             <font>
+                                 <Font size="10.0" />
+                             </font>
+                         </Text>
+                         <ChoiceBox fx:id="genderSelector" layoutX="193.0" layoutY="274.0" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #8dc2b0;" />
+                         <Text layoutX="22.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COVID Check" wrappingWidth="183.4">
+                             <font>
+                                 <Font name="System Bold" size="24.0" />
+                             </font>
+                         </Text>
+                         <CheckBox fx:id="symptomsCoughing" layoutX="28.0" layoutY="374.0" mnemonicParsing="false" text="Cough" />
+                         <Text layoutX="39.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select all those that apply">
+                             <font>
+                                 <Font name="System Italic" size="12.0" />
+                             </font></Text>
+                         <CheckBox fx:id="symptomsFever" layoutX="28.0" layoutY="408.0" mnemonicParsing="false" text="Fever or chills" />
+                         <CheckBox fx:id="symptomsBreathing" layoutX="28.0" layoutY="442.0" mnemonicParsing="false" text="Shortness of breath" />
+                         <CheckBox fx:id="symptomsFatigue" layoutX="28.0" layoutY="476.0" mnemonicParsing="false" text="Fatigue" />
+                         <CheckBox fx:id="symptomsAches" layoutX="28.0" layoutY="510.0" mnemonicParsing="false" text="Muscle or body aches" />
+                         <CheckBox fx:id="symptomsHeadache" layoutX="28.0" layoutY="544.0" mnemonicParsing="false" text="Headache" />
+                         <CheckBox fx:id="symptomsSmell" layoutX="28.0" layoutY="578.0" mnemonicParsing="false" text="New loss of taste or smell" />
+                         <CheckBox fx:id="symptomsThroat" layoutX="28.0" layoutY="612.0" mnemonicParsing="false" text="Sore throat" />
+                         <CheckBox fx:id="symptomsCongestion" layoutX="200.0" layoutY="374.0" mnemonicParsing="false" text="Congestion or runny nose" />
+                         <CheckBox fx:id="symptomsNausea" layoutX="200.0" layoutY="408.0" mnemonicParsing="false" text="Nausea or vomiting" />
+                         <CheckBox fx:id="symptomsDiarrhea" layoutX="200.0" layoutY="442.0" mnemonicParsing="false" text="Diarrhea" />
+                         <CheckBox fx:id="symptomsTravel" layoutX="200.0" layoutY="476.0" mnemonicParsing="false" text="Travelled out of state in past 14 days" />
+                         <CheckBox fx:id="symptomsElder" layoutX="200.0" layoutY="510.0" mnemonicParsing="false" text="Taken care of family diagnosed with COVID" />
+                         <Button fx:id="contractingCOVIDBtn" layoutX="202.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleCalculateChance" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #dba0d9;" text="Chance of having contracted COVID-19" />
+                         <Label fx:id="chanceLbl" layoutX="453.0" layoutY="326.0" prefHeight="26.0" prefWidth="150.0" text="Chance:" />
+                         <ChoiceBox fx:id="movementSelector" layoutX="375.0" layoutY="153.0" prefHeight="26.0" prefWidth="204.0" style="-fx-background-color: #8dc2b0;" />
+                         <Text layoutX="375.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of Movement/Interaction" />
+                        <Button fx:id="loadBtn" layoutX="457.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleLoad" style="-fx-background-color: #c093d9;" text="Load Data" />
+                        <Button fx:id="saveBtn" layoutX="538.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleSave" style="-fx-background-color: #c093d9;" text="Save Data" />
+                        <Button fx:id="addCTBtn" layoutX="377.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleAddContactTracer" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #c093d9;" text="Add to Contact Tracer" />
+                        <Button fx:id="removeCTBtn" layoutX="376.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleRemoveContactTracer" prefHeight="26.0" prefWidth="191.0" style="-fx-background-color: #c093d9;" text="Remove from Contact Tracer" />
+                        <Button fx:id="testForCovidBtn" layoutX="690.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleCovidTest" prefHeight="26.0" prefWidth="203.0" style="-fx-background-color: #dba0d9;" text="Test For Covid" />
+                        <Text fx:id="addCTErrorLbl" fill="#f50606" layoutX="380.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please get tested first" visible="false" wrappingWidth="127.47854614257812" />
+                        <Label fx:id="testedPositiveLbl" layoutX="690.0" layoutY="208.0" text="Tested Positive" visible="false" />
+                        <Label fx:id="testedNegativeLbl" layoutX="803.0" layoutY="208.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="18.0" prefWidth="89.0" text="Tested Negative" visible="false" />
+                        <Text layoutX="689.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Testing" wrappingWidth="228.39999999999998">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="687.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vaccination Status" wrappingWidth="231.4">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="statusLbl" layoutX="687.0" layoutY="310.0" prefHeight="20.0" prefWidth="367.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+
+                        <Rectangle fx:id="coverRect" arcHeight="5.0" arcWidth="5.0" fill="#eddaf7" height="530.0" layoutX="10.0" layoutY="117.0" opacity="0.82" stroke="#eddaf7" strokeType="INSIDE" width="936.0" />                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Contact Tracer">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="738.0" prefWidth="1574.0" style="-fx-background-color: #edfae1;">
+                     <children>
+                        <GridPane fx:id="contactGrid" layoutX="9.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="7.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <ListView fx:id="covidPositiveList" layoutX="957.0" layoutY="66.0" prefHeight="190.0" prefWidth="163.0" />
+                        <ListView fx:id="covidRecoveredList" layoutX="1159.0" layoutY="66.0" prefHeight="190.0" prefWidth="163.0" />
+                        <ListView fx:id="covidDeathsList" layoutX="1360.0" layoutY="66.0" prefHeight="190.0" prefWidth="163.0" />
+                        <Text layoutX="957.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COVID Positive:" wrappingWidth="141.990234375">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Text>
+                        <Text layoutX="1155.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COVID Recovered:" wrappingWidth="170.64990234375">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="1360.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COVID Deaths:" wrappingWidth="170.64990234375">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutX="957.0" layoutY="269.0" prefHeight="0.0" prefWidth="565.0" />
+                        <ChoiceBox fx:id="patientSearchField" layoutX="1326.0" layoutY="279.0" prefWidth="150.0" style="-fx-background-color: #8dc2b0;" />
+                        <TextField fx:id="patientSearchBar" layoutX="1120.0" layoutY="279.0" onKeyReleased="#handleFilterNamesContact" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #8dc2b0;" />
+                        <Text layoutX="979.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for Patient:" wrappingWidth="136.3828125">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="nameTxt" layoutX="977.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: " wrappingWidth="122.58203125">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ageTxt" layoutX="977.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" wrappingWidth="165.63092041015625">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="registerForVaxBtn" layoutX="1310.0" layoutY="348.0" mnemonicParsing="false" onAction="#registerForVax" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #8ab6d1;" text="Register for Vaccination" />
+                        <DatePicker fx:id="vaxDatePicker" layoutX="1310.0" layoutY="313.0" prefHeight="26.0" prefWidth="173.0" />
+                        <Label fx:id="vaxErrorMessage" layoutX="1248.0" layoutY="380.0" prefHeight="18.0" prefWidth="278.0" text="Error message lbl" textAlignment="RIGHT" textFill="#fa1f1f" visible="false" />
+                        <Label fx:id="congratsTxt" layoutX="1100.0" layoutY="375.0" prefHeight="20.0" prefWidth="329.0" text="Congratulations! " visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="firstVaxTxt" layoutX="1126.0" layoutY="399.0" prefHeight="18.0" prefWidth="236.0" text="First vaccination date:" visible="false" />
+                        <Label fx:id="secondVaxTxt" layoutX="1124.0" layoutY="418.0" prefHeight="18.0" prefWidth="220.0" text="Second vaccination date:" visible="false" />
+                        <Separator layoutX="958.0" layoutY="438.0" prefHeight="0.0" prefWidth="565.0" />
+                        <ListView fx:id="vaxFirstDoseList" layoutX="957.0" layoutY="480.0" prefHeight="190.0" prefWidth="163.0" />
+                        <Text layoutX="956.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vaccinated 1st Dose:" wrappingWidth="169.990234375">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <ListView fx:id="vaxSecondDoseList" layoutX="1159.0" layoutY="480.0" prefHeight="190.0" prefWidth="163.0" />
+                        <Text layoutX="1156.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vaccinated 2nd Dose:" wrappingWidth="169.990234375">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <ListView fx:id="fullyImmunizedList" layoutX="1360.0" layoutY="480.0" prefHeight="190.0" prefWidth="163.0" />
+                        <Text layoutX="1357.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fully Immunized:" wrappingWidth="169.990234375">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="deadLbl" layoutX="976.0" layoutY="364.0" prefHeight="18.0" prefWidth="40.0" text="DEAD" textFill="#fd0000" visible="false">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="patientInfoList" layoutX="1056.0" layoutY="683.0" prefHeight="36.0" prefWidth="200.0" />
+                        <Button fx:id="massVaxBtn" layoutX="968.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleMassVax" prefHeight="45.0" prefWidth="118.0" style="-fx-background-color: #8ab6d1;" text="Mass Vaccination 50% population" textAlignment="CENTER" wrapText="true" />
+                        <Text layoutX="1227.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Date">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="pauseButton" layoutX="958.0" layoutY="11.0" mnemonicParsing="false" onAction="#handlePause" prefHeight="21.0" prefWidth="48.0" style="-fx-background-color: #8dc2b0;" text="Play" />
+                        <Text layoutX="953.0" layoutY="707.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Person Info:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Population Data">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="670.0" prefWidth="1329.0" style="-fx-background-color: #f5e5bf;">
+                     <children>
+                        <BarChart fx:id="popBarGraph" alternativeColumnFillVisible="true" animated="false" categoryGap="30.0" layoutX="55.0" layoutY="72.0" legendVisible="false" prefHeight="408.0" prefWidth="602.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <Button fx:id="popDataBtn" layoutX="102.0" layoutY="478.0" mnemonicParsing="false" onAction="#handlePopData" style="-fx-background-color: #EEB064;" text="Show Data" />
+                        <Text layoutX="87.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Population Data">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="totalPopTxt" layoutX="87.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Population:" wrappingWidth="194.482421875">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="contactPtsTxt" layoutX="87.0" layoutY="601.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Points of Contact:" wrappingWidth="354.482421875">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <BarChart fx:id="popChart2" alternativeColumnFillVisible="true" animated="false" layoutX="692.0" layoutY="75.0" legendVisible="false" prefHeight="400.0" prefWidth="748.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <ListView fx:id="contactTracerUpdates" layoutX="513.0" layoutY="513.0" prefHeight="230.0" prefWidth="253.0" />
+                        <Text layoutX="417.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Updates:">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+
+                     </children></AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
